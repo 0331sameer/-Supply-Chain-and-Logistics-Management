@@ -1,10 +1,10 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
+
 const inventorySchema = new mongoose.Schema({
-  inventoryId: { type: String, required: true, unique: true },
-  product: { type: mongoose.Schema.Types.ObjectId, ref: 'Product', required: true },
-  location: { type: String, required: true },
-  quantityAvailable: { type: Number, required: true },
-  reorderLevel: { type: Number },
-  lastUpdated: { type: Date, default: Date.now }
+  product: { type: String, required: true }, // Product identifier (e.g., product ID)
+  quantityAvailable: { type: Number, required: true }, // Available stock for the product
+  reorderLevel: { type: Number, required: true }, // Reorder level for the product
+  lastUpdated: { type: Date, required: true }, // Timestamp of the last inventory update
 });
-module.exports = mongoose.model('Inventory', inventorySchema);
+
+module.exports = mongoose.model("Inventory", inventorySchema);
